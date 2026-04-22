@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -48,7 +50,7 @@ namespace OlegChaes2
         public async Task<Dictionary<string, object>> getReactorDataTeam(string id)
         {
             var client = new HttpClient();
-            string endpoint = "/reactor/data?team_id=" + id;
+            string endpoint = "/reactor/data?team_id=" + Convert.ToString(id);
             Dictionary<string, object> data = new Dictionary<string, object>();
             data["code"] = "error";
             var response = await client.GetAsync(baseurl+ endpoint);
@@ -78,7 +80,7 @@ namespace OlegChaes2
         public async Task<List<object>> getReactorHistoryTeam(string id)
         {
             var client = new HttpClient();
-            string endpoint = "/reactor/history?team_id=" + id;
+            string endpoint = "/reactor/history?team_id=" + Convert.ToString(id);
             List<object> data = new List<object>();
             data.Add( "error");
             var response = await client.GetAsync(baseurl + endpoint);
@@ -105,11 +107,116 @@ namespace OlegChaes2
             return data;
         }
 
-        public string createReactor(int id)
+        public async Task<string> createReactor(string id)
         {
+            var client = new HttpClient();
+            string endpoint = "reactor/create_reactor?team_id=" + Convert.ToString(id);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["code"] = "error";
+            var json = "{}";
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(baseurl + endpoint, content);
 
+            if (response != null)
 
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                StringReader csr = new StringReader(responseString);
+            var content234 = new JsonTextReader(csr);
+            JsonSerializer serializer = new JsonSerializer();
+         
+                data = serializer.Deserialize<Dictionary<string, object>>(content234);
+
+            }
             return "Реактор команды " + id.ToString() + " создан ";
+        }
+        public async Task<string > resetReactor(string id)
+        {
+            var client = new HttpClient();
+            string endpoint = "reactor/reset_reactor?team_id=" + Convert.ToString(id);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["code"] = "error";
+            var json = "{}";
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(baseurl + endpoint, content);
+            if (response != null)
+
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                StringReader csr = new StringReader(responseString);
+                var content234 = new JsonTextReader(csr);
+                JsonSerializer serializer = new JsonSerializer();
+
+                data = serializer.Deserialize<Dictionary<string, object>>(content234);
+
+            }
+            return "Реактор команды " + id.ToString() + " сборшен ";
+        }
+        public async Task<string> emergencyShutdown(string id)
+        {
+            var client = new HttpClient();
+            string endpoint = "reactor/emergency-shutdown?team_id=" + Convert.ToString(id);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["code"] = "error";
+            var json = "{}";
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(baseurl + endpoint, content);
+            if (response != null)
+
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                StringReader csr = new StringReader(responseString);
+                var content234 = new JsonTextReader(csr);
+                JsonSerializer serializer = new JsonSerializer();
+
+                data = serializer.Deserialize<Dictionary<string, object>>(content234);
+
+            }
+            return "Реактор команды " + id.ToString() + " остановлен ";
+        }
+        public async Task<string> refillWater(string id, float amount)
+        {
+            var client = new HttpClient();
+            string endpoint = "reactor/refill_water?team_id=" + Convert.ToString(id) + "&amount=" + Convert.ToString(amount);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["code"] = "error";
+            var json = "{}";
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(baseurl + endpoint, content);
+            if (response != null)
+
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                StringReader csr = new StringReader(responseString);
+                var content234 = new JsonTextReader(csr);
+                JsonSerializer serializer = new JsonSerializer();
+
+                data = serializer.Deserialize<Dictionary<string, object>>(content234);
+
+            }
+            return "Реактор команды " + id + " долит водой на " + Convert.ToString(amount) ;
+        }
+        public async Task<string> activateCooling(string id, int amount)
+        {
+            var client = new HttpClient();
+            string endpoint = "reactor/activate_cooling?team_id=" + Convert.ToString(id) + "&amount=" + Convert.ToString(amount);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["code"] = "error";
+            var json = "{}";
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(baseurl + endpoint, content);
+            if (response != null)
+
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                StringReader csr = new StringReader(responseString);
+                var content234 = new JsonTextReader(csr);
+                JsonSerializer serializer = new JsonSerializer();
+
+                data = serializer.Deserialize<Dictionary<string, object>>(content234);
+
+            }
+            return "Реактор команды " + id + " охлажден на " + Convert.ToString(amount);
         }
     }
     

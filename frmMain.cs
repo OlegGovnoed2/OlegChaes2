@@ -18,6 +18,12 @@ namespace OlegChaes2
         {
             InitializeComponent();
             id1 = id;
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer(
+                
+                );
+            timer.Interval = 2000;
+            timer.Tick += frmMain_Shown;
+            timer.Start();
 
         }
 

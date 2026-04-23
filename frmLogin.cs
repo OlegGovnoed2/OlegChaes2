@@ -28,7 +28,7 @@ namespace OlegChaes2
         {
             //Conn conn = new Conn();
             //string res = await conn.regTeam();
-           // label1.Text = res;
+            // label1.Text = res;
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
@@ -50,7 +50,9 @@ namespace OlegChaes2
             var history = await conn1.getReactorHistoryTeam(id);
             if (!history.Contains("error"))
             {
-                MessageBox.Show("Вы вошли как команда " +  id);
+                MessageBox.Show("Вы вошли как команда " + id);
+                frmMain main = new frmMain(id);
+                main.Show();
             }
             else
             {

@@ -37,6 +37,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.txtWater = new System.Windows.Forms.TextBox();
+            this.btnWater = new System.Windows.Forms.Button();
+            this.btnCool = new System.Windows.Forms.Button();
+            this.txtCool = new System.Windows.Forms.TextBox();
+            this.lblWarns = new System.Windows.Forms.Label();
+            this.lblChanges = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +65,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(374, 72);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -124,7 +132,7 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Roboto Lt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnReset.Location = new System.Drawing.Point(549, 41);
+            this.btnReset.Location = new System.Drawing.Point(495, 38);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(149, 51);
             this.btnReset.TabIndex = 1;
@@ -132,18 +140,92 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // btnStop
+            // 
+            this.btnStop.Font = new System.Drawing.Font("Roboto Lt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnStop.Location = new System.Drawing.Point(336, 38);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(149, 51);
+            this.btnStop.TabIndex = 2;
+            this.btnStop.Text = "Аварийная остановка";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // txtWater
+            // 
+            this.txtWater.Location = new System.Drawing.Point(180, 95);
+            this.txtWater.Name = "txtWater";
+            this.txtWater.Size = new System.Drawing.Size(150, 20);
+            this.txtWater.TabIndex = 3;
+            // 
+            // btnWater
+            // 
+            this.btnWater.Font = new System.Drawing.Font("Roboto Lt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnWater.Location = new System.Drawing.Point(180, 38);
+            this.btnWater.Name = "btnWater";
+            this.btnWater.Size = new System.Drawing.Size(149, 51);
+            this.btnWater.TabIndex = 4;
+            this.btnWater.Text = "Долить воды";
+            this.btnWater.UseVisualStyleBackColor = true;
+            this.btnWater.Click += new System.EventHandler(this.btnWater_Click);
+            // 
+            // btnCool
+            // 
+            this.btnCool.Font = new System.Drawing.Font("Roboto Lt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCool.Location = new System.Drawing.Point(650, 38);
+            this.btnCool.Name = "btnCool";
+            this.btnCool.Size = new System.Drawing.Size(149, 51);
+            this.btnCool.TabIndex = 6;
+            this.btnCool.Text = "Охладить реактор";
+            this.btnCool.UseVisualStyleBackColor = true;
+            this.btnCool.Click += new System.EventHandler(this.btnCool_Click);
+            // 
+            // txtCool
+            // 
+            this.txtCool.Location = new System.Drawing.Point(650, 95);
+            this.txtCool.Name = "txtCool";
+            this.txtCool.Size = new System.Drawing.Size(150, 20);
+            this.txtCool.TabIndex = 5;
+            // 
+            // lblWarns
+            // 
+            this.lblWarns.AutoSize = true;
+            this.lblWarns.Font = new System.Drawing.Font("Roboto Lt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblWarns.Location = new System.Drawing.Point(240, 407);
+            this.lblWarns.Name = "lblWarns";
+            this.lblWarns.Size = new System.Drawing.Size(0, 19);
+            this.lblWarns.TabIndex = 7;
+            // 
+            // lblChanges
+            // 
+            this.lblChanges.AutoSize = true;
+            this.lblChanges.Font = new System.Drawing.Font("Roboto Lt", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblChanges.Location = new System.Drawing.Point(239, 547);
+            this.lblChanges.Name = "lblChanges";
+            this.lblChanges.Size = new System.Drawing.Size(0, 25);
+            this.lblChanges.TabIndex = 8;
+            // 
             // frmMain
             // 
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(890, 553);
+            this.ClientSize = new System.Drawing.Size(890, 664);
+            this.Controls.Add(this.lblChanges);
+            this.Controls.Add(this.lblWarns);
+            this.Controls.Add(this.btnCool);
+            this.Controls.Add(this.txtCool);
+            this.Controls.Add(this.btnWater);
+            this.Controls.Add(this.txtWater);
+            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
+            this.Text = "Управление реактором";
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -161,5 +243,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.TextBox txtWater;
+        private System.Windows.Forms.Button btnWater;
+        private System.Windows.Forms.Button btnCool;
+        private System.Windows.Forms.TextBox txtCool;
+        private System.Windows.Forms.Label lblWarns;
+        private System.Windows.Forms.Label lblChanges;
     }
 }

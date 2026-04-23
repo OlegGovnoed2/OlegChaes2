@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -160,68 +161,68 @@ namespace OlegChaes2
         }
         public async Task<string> emergencyShutdown(string id)
         {
-            var client = new HttpClient();
-            string endpoint = "reactor/emergency-shutdown?team_id=" + Convert.ToString(id);
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            data["code"] = "error";
-            var json = "{}";
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(baseurl + endpoint, content);
-            if (response != null)
+            var url = "http://mephi.opentoshi.net/api/v1/reactor/emergency-shutdown?team_id=" + id;
 
+            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpRequest.Method = "POST";
+
+            httpRequest.Accept = "application/json";
+            httpRequest.ContentType = "application/json";
+
+
+
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                StringReader csr = new StringReader(responseString);
-                var content234 = new JsonTextReader(csr);
-                JsonSerializer serializer = new JsonSerializer();
-
-                data = serializer.Deserialize<Dictionary<string, object>>(content234);
-
+                var result = streamReader.ReadToEnd();
             }
+
+            Console.WriteLine(httpResponse.StatusCode);
             return "Реактор команды " + id.ToString() + " остановлен ";
         }
-        public async Task<string> refillWater(string id, float amount)
+        public async Task<string> refillWater(string id, double amount)
         {
             var client = new HttpClient();
-            string endpoint = "reactor/refill_water?team_id=" + Convert.ToString(id) + "&amount=" + Convert.ToString(amount);
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            data["code"] = "error";
-            var json = "{}";
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(baseurl + endpoint, content);
-            if (response != null)
 
+            var url = baseurl + "/reactor/refill-water?team_id=" + Convert.ToString(id) + "&amount=" + Convert.ToString(amount); 
+
+            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpRequest.Method = "POST";
+
+            httpRequest.Accept = "application/json";
+            httpRequest.ContentType = "application/json";
+
+
+            Console.WriteLine(url);
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                StringReader csr = new StringReader(responseString);
-                var content234 = new JsonTextReader(csr);
-                JsonSerializer serializer = new JsonSerializer();
-
-                data = serializer.Deserialize<Dictionary<string, object>>(content234);
-
+                var result = streamReader.ReadToEnd();
             }
+
+            Console.WriteLine(httpResponse.StatusCode);
             return "Реактор команды " + id + " долит водой на " + Convert.ToString(amount);
         }
         public async Task<string> activateCooling(string id, int amount)
         {
             var client = new HttpClient();
-            string endpoint = "reactor/activate_cooling?team_id=" + Convert.ToString(id) + "&amount=" + Convert.ToString(amount);
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            data["code"] = "error";
-            var json = "{}";
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(baseurl + endpoint, content);
-            if (response != null)
+            string endpoint = "/reactor/activate-cooling?team_id=" + Convert.ToString(id) + "&amount=" + Convert.ToString(amount);
 
+            var httpRequest = (HttpWebRequest)WebRequest.Create(baseurl + endpoint);
+            httpRequest.Method = "POST";
+
+            httpRequest.Accept = "application/json";
+            httpRequest.ContentType = "application/json";
+
+
+            Console.WriteLine(baseurl + endpoint);
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                StringReader csr = new StringReader(responseString);
-                var content234 = new JsonTextReader(csr);
-                JsonSerializer serializer = new JsonSerializer();
-
-                data = serializer.Deserialize<Dictionary<string, object>>(content234);
-
+                var result = streamReader.ReadToEnd();
             }
+
+            Console.WriteLine(httpResponse.StatusCode);
             return "Реактор команды " + id + " охлажден на " + Convert.ToString(amount);
         }
     }

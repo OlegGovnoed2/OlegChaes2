@@ -1,0 +1,15 @@
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\bin\Debug\OlegChaes2.exe.config
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\bin\Debug\OlegChaes2.exe
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\bin\Debug\OlegChaes2.pdb
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.csproj.AssemblyReference.cache
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.csproj.SuggestedBindingRedirects.cache
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.frmLogin.resources
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.frmMain.resources
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.Properties.Resources.resources
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.csproj.GenerateResource.cache
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.csproj.CoreCompileInputs.cache
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.csproj.CopyComplete
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.exe
+C:\Users\it-student\source\repos\OlegChaes2\OlegChaes2\obj\Debug\OlegChaes2.pdb
